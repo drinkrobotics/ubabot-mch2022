@@ -176,7 +176,10 @@ class StateStatus:
     def drawAlcohol(self):
         pegel = self.bac
         if (pegel >= 0):
-            display.drawText(0, 150, "BAC: {:.2f}% / {:.2f}‰".format(pegel, pegel / 10.0))
+            display.drawText(0, 150, "BAC: {:.2f}% / {:.2f}‰".format(pegel, pegel / 10.0), 0x0044FF, "roboto_regular18")
+
+    def drawHint(self):
+        display.drawText(0, 180, "Press A to order another drink!", 0xFF0000)
 
     def enter(self):
         self.parent.drawSplash()
@@ -192,6 +195,7 @@ class StateStatus:
         self.parent.drawWifiStatus()
         self.drawData()
         self.drawAlcohol()
+        self.drawHint()
         display.flush()
 
     def act(self, inputs):
@@ -203,7 +207,11 @@ class StateStatus:
             self.parent.drawWifiStatus()
             self.drawData()
             self.drawAlcohol()
+            self.drawHint()
             display.flush()
+
+        if inputs.a:
+            return 1
 
         return -1
 
