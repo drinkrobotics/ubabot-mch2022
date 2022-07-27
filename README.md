@@ -1,0 +1,1 @@
+Remotely control the UbaBot Cocktail machine in Frubar Island village. Look at the menu and pre-order drinks.
